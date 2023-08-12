@@ -12,7 +12,7 @@ Pagina personal
  
 ## Installation
 
-1. `git clone https://github.com/onofriojose/contact.git`
+1. `git clone https://github.io/onofriojose/contact.git`
 
 2. Open `index.html`
 
