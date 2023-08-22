@@ -10,7 +10,7 @@ body {
   height: 100vh;
   display: grid;
   place-items: center;
-  background-color: aqua;
+  background-color: rgb(146, 186, 246);
 }
 
 .page-wrapper {
