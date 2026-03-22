@@ -1,85 +1,110 @@
-/* Importamos una fuente moderna y legible (opcional, pero recomendada) */
+/* Importamos una fuente moderna y legible */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  /* Aplicamos la tipografía inclusiva */
+  /* Aplicamos la tipografía inclusiva y jerarquía visual */
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .page-wrapper {
-  /* Fondo con la imagen que proporcionaste */
-  background-image: url('../chainsaw-man-wc-1920x1200.jpg'); /* Asegúrate de que la ruta sea correcta */
+  /* Fallback color optimizado para rendimiento antes de que cargue la imagen */
+  background-color: #000000;
+  
+  /* Ruta relativa corregida apuntando a la carpeta public */
+  background-image: url('../public/chainsaw-man-wc-1920x1200.jpg'); 
   background-size: cover;
-  background-position: center;
+  
+  /* Anclamos el fondo a la derecha para no perder al personaje en pantallas chicas */
+  background-position: right center;
   background-repeat: no-repeat;
   
-  /* Contenedor flexible para centrar el contenido */
+  /* Layout Flexbox optimizado para la composición visual de tu imagen */
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* Alineamos a la izquierda hacia el espacio negro */
   align-items: center;
   min-height: 100vh;
   width: 100%;
+  padding-left: 12%; /* Separación del borde izquierdo */
+  box-sizing: border-box;
 }
 
 .content-wrapper {
   /* --- Principio de Diseño Inclusivo: Contraste --- */
-  /* Creamos un contenedor oscuro y semi-transparente para la legibilidad */
-  background-color: rgba(15, 15, 15, 0.85); /* Un negro casi opaco */
+  background-color: rgba(15, 15, 15, 0.85); /* Mantiene la legibilidad sobre la lluvia/texturas */
   padding: 3rem 4rem;
   border-radius: 16px;
   text-align: center;
   
-  /* --- Principio de UI: Refinamiento --- */
-  /* Un borde sutil y sombra para dar profundidad */
+  /* --- Principio de UI: Refinamiento y Elevación --- */
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px); /* Añade un sutil desenfoque al fondo detrás de la tarjeta */
   
-  /* Aseguramos que el contenedor no sea demasiado ancho en pantallas grandes */
   max-width: 600px;
   width: 90%;
+  z-index: 10;
 }
 
 /* --- Estilos de Tipografía --- */
-
 h1 {
-  color: #FFFFFF; /* Máximo contraste */
-  font-size: 3.5rem; /* Grande y claro */
+  color: #FFFFFF; 
+  font-size: 3.5rem; 
   margin-top: 0;
   margin-bottom: 1rem;
   font-weight: 700;
-  letter-spacing: -1.5px; /* Estilo moderno */
+  letter-spacing: -1.5px; 
 }
 
 p {
-  color: #DCDCDC; /* Gris muy claro para el subtítulo, manteniendo buen contraste */
+  color: #DCDCDC; 
   font-size: 1.5rem;
   margin-bottom: 2rem;
   font-weight: 400;
 }
 
 /* --- Principio de Diseño Inclusivo: Claridad en los Enlaces --- */
-
 .content-wrapper a {
-  text-decoration: none; /* Quitamos el subrayado por defecto */
-  color: #FFFFFF; /* Color base de los iconos */
-  margin: 0 15px; /* Espaciado entre iconos */
+  text-decoration: none; 
+  color: #FFFFFF; 
+  margin: 0 15px; 
   display: inline-block;
-  transition: transform 0.2s ease, color 0.2s ease; /* Animación suave */
+  transition: transform 0.2s ease, color 0.2s ease; 
 }
 
-/* --- Principio de UI: Feedback Visual --- */
-/* Efecto al pasar el mouse por encima (hover) */
+/* --- Principio de UI: Feedback Visual Activo --- */
 .content-wrapper a:hover {
-  transform: scale(1.1); /* Efecto de aumento sutil */
-  color: #38bdf8; /* Un color de acento (cyan claro) para feedback visual */
+  transform: scale(1.1); 
+  color: #38bdf8; /* Cyan claro para contraste semántico */
 }
 
-/* Aseguramos que los iconos mantengan el color del enlace */
 .icon {
   color: inherit;
+}
+
+/* --- Responsive Design System (Mobile First approach) --- */
+@media (max-width: 1024px) {
+  .page-wrapper {
+    padding-left: 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    /* En dispositivos móviles regresamos al centro ya que no hay suficiente ancho */
+    justify-content: center;
+    padding-left: 0;
+  }
+  
+  .content-wrapper {
+    padding: 2rem; /* Reducimos el padding interno para ganar espacio */
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
 }
